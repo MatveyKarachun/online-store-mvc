@@ -34,8 +34,7 @@ public class ProductControllerTest {
 
     @Before
     public void setup(){
-        MockitoAnnotations.initMocks(this); //initializes controller and mocks
-
+        MockitoAnnotations.openMocks(this);//opens (initializes) controller and mocks
 
         mockMvc = MockMvcBuilders.standaloneSetup(productController).build();
     }
@@ -101,7 +100,7 @@ public class ProductControllerTest {
 
 
         //should not call service
-        verifyZeroInteractions(productService);
+        verifyNoMoreInteractions(productService);
 
 
         mockMvc.perform(get("/product/new"))

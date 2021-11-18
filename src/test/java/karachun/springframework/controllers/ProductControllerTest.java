@@ -96,8 +96,6 @@ public class ProductControllerTest {
 
     @Test
     public void testNewProduct() throws Exception {
-        Integer id = 1;
-
 
         //should not call service
         verifyNoMoreInteractions(productService);
@@ -125,7 +123,7 @@ public class ProductControllerTest {
         returnProduct.setImageUrl(imageUrl);
 
 
-        when(productService.saveOrUpdate(Matchers.<Product>any())).thenReturn(returnProduct);
+        when(productService.saveOrUpdate(ArgumentMatchers.<Product>any())).thenReturn(returnProduct);
 
 
         mockMvc.perform(post("/product")
